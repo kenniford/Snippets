@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "Snippet",
+  "version": "1.0",
+  "description": "Collect reference Snippets.",
+  "permissions": ["storage", "scripting", "tabs"],
+  "icons": {
+    "16": "icon/icon.png",
+    "32": "icon/icon.png",
+    "48": "icon/icon.png",
+    "128": "icon/icon.png"
+  },
+  "browser_action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16": "icon/icon.png",
+      "32": "icon/icon.png",
+      "48": "icon/icon.png",
+      "128": "icon/icon.png"
+    }
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+D",
+        "mac": "Command+Shift+D"
+      }
+    },
+    "save-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S" // Slash?
+      },
+      "description": "Save the current selection or page"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["background.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
